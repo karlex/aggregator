@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AggregatorApp {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
+        List<AggregatorTask> tasks = prepareTasks();
+
         Aggregator aggregator = new Aggregator();
-        aggregator.setTasks(prepareTasks());
+        aggregator.addTasks(tasks);
+        aggregator.setThreadCount(5);
         aggregator.aggregate();
     }
 
